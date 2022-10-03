@@ -9,7 +9,6 @@ import wandb
 
 logging.basicConfig(level=logging.INFO, format="%(asctime)-15s %(message)s")
 logger = logging.getLogger()
-print("remove this print")
 
 
 def go(args):
