@@ -33,11 +33,9 @@ def go(args):
     logger.info("Cleaning data")
     df = df[df["price"].between(args.min_price, args.max_price)].copy()
     df['last_review'] = pd.to_datetime(df['last_review'])
-    df = df.reset_index()
 
     logger.info("Saving file")
-    tmp_filename = "clean_sample.csv"
-    df.to_csv(tmp_filename, index=False)
+    df.to_csv(args.output_artifact, index=False, index_label=False)
 
     logger.info("Attaching saved file to artifact")
     artifact = wandb.Artifact(
@@ -45,13 +43,13 @@ def go(args):
         type=args.output_type,
         description=args.output_description
     )
-    artifact.add_file(tmp_filename)
+    artifact.add_file(args.output_artifact)
 
     logger.info("Logging artifact")
     run.log_artifact(artifact)
 
     logger.info("Removing unnecessary files")
-    os.remove(tmp_filename)
+    os.remove(args.output_artifact)
 
 
 if __name__ == "__main__":
