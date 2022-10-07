@@ -79,7 +79,7 @@ def go(args):
     # Fit the pipeline sk_pipe by calling the .fit method on X_train and y_train
     # YOUR CODE HERE
     ######################################
-    sk_pipe.fit(X_train[processed_features], y_train)
+    sk_pipe.fit(X_train, y_train)
 
     # Compute r2 and MAE
     logger.info("Scoring")
@@ -103,7 +103,7 @@ def go(args):
     # YOUR CODE HERE
     ######################################
     # Get the columns that we are really using from the pipeline
-    signature = infer_signature(X_val[processed_features], y_pred)
+    signature = mlflow.models.infer_signature(X_val[processed_features], y_pred)
 
     with tempfile.TemporaryDirectory() as temp_dir:
 
@@ -258,7 +258,7 @@ def get_inference_pipeline(rf_config, max_tfidf_features):
     sk_pipe = Pipeline(
         steps=[
             ("preprocessor", preprocessor),
-            ("rf_regressor", random_Forest)
+            ("random_forest", random_Forest)
         ]
     )
 
