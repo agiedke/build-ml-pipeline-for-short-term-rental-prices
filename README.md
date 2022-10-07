@@ -30,6 +30,8 @@ In this project you will build such a pipeline.
   * [Release the pipeline](#release-the-pipeline)
   * [Train the model on a new data sample](#train-the-model-on-a-new-data-sample)
 - [Cleaning up](#cleaning-up)
+- [Submission links](#submission-links)
+
 
 ## Preliminary steps
 ### Fork the Starter kit
@@ -567,3 +569,10 @@ you have trained your new model on the new data.
 ## License
 
 [License](LICENSE.txt)
+
+## Submission links
+### Weights and Biases
+https://wandb.ai/agiedke/nyc_airbnb?workspace=user-agiedke
+
+### Github Repository
+https://github.com/agiedke/build-ml-pipeline-for-short-term-rental-prices
