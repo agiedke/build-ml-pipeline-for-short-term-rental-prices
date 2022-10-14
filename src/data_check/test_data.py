@@ -4,6 +4,9 @@ import scipy.stats
 
 
 def test_column_names(data):
+    """
+    Confirm that expected columns exist in the data in the expected order.
+    """
 
     expected_colums = [
         "id",
@@ -33,6 +36,9 @@ def test_column_names(data):
 
 
 def test_neighborhood_names(data):
+    """
+    Confirm that the column "neighbourhood_group" contains the expected categories.
+    """
 
     known_names = ["Bronx", "Brooklyn", "Manhattan", "Queens", "Staten Island"]
 
@@ -68,13 +74,18 @@ def test_similar_neigh_distrib(data: pd.DataFrame, ref_data: pd.DataFrame, kl_th
 
 
 def test_row_count(data):
+    """
+    Confirm that data does not exceed the expected number of rows.
+    """
     max_row_nr = 1000000
 
     assert 15000 < data.shape[0] < max_row_nr
 
 
 def test_price_range(data, min_price, max_price):
-
+    """
+    Confirm that price lies in the expected range.
+    """
     col_name = "price"
 
     assert data["price"].between(min_price,max_price).all(), (
